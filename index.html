@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Front End Development</title>
+	<meta name="viewport" content="width=1024">
+
+        <link rel="stylesheet" href="dist/coderdeck-core.min.css" type="text/css">
+	<link rel="stylesheet" id='style-theme-link' href="dist/coderdeck.css" type="text/css" >
+
+	<script src='dist/jquery.min.js'></script>
+	<script src="dist/modernizr.js"></script>
+</head>
+<body class="deck-container">
+
+<script type='text/coderdeck' id='coderdeck-default'>
+  <html>
+    <head>
+      <script src='dist/jquery.min.js'>SCRIPTEND
+    </head>
+    <body>
+	    CODE
+    </body>
+</html>
+</script>
+
+
+<script type='text/coderdeck' id='coderdeck-css-playground'>
+	<html>
+		<title>test</title>
+			CODE
+		<body>
+			<h1>I'm a H1 heading</h1>
+			<h2>I'm a H2 heading</h2>
+			<p>Pargraph of text &lt;p&gt;</p>
+			<div class='stuff'>&lt;div&gt; with class "stuff"</div>
+			<div id='my-div'>&lt;div&gt; with id "my-div"</div>
+		</body>
+	</html>
+</script>
+
+
+<article class='slide slide-subhead'>
+<h1>Front End Development</h1>
+<h2>Day 1<br/>
+Pascal Rettig / CTO at <a href='http://www.fundraise.com'>Fundraise.com</a> / <a href='http://twitter.com/cykod'>@cykod</a>
+</h2>
+</article>
+
+<!-- Apply a class of "coder-editor" to a textarea to make it show up as runnable code -->
+<article class='slide slide-list'>
+<h2>2-Day schedule - Day 1</h2>
+<ul>
+<li class="slide">
+	<h3>What is the web?</h3>
+</li>
+<li class="slide">
+	<h3>What does front end mean?</h3>
+</li>
+<li class="slide">
+	<h3>The Ages of the Web</h3>
+</li>
+<li class="slide">
+	<h3>What is the role of the client?</h3>
+</li>
+<li class="slide">
+	<h3>HTML5 Semantics</h3>
+</li>
+<li class="slide">
+	<h3>CSS / Styling best practices</h3>
+</li>
+<li class="slide">
+	<h3>Bootstrap / Boilerplate</h3>
+</li>
+<li class="slide">
+	<h3>JavaScript the language + quirks</h3>
+</li>
+<li class="slide">
+	<h3>OOP in JavaScript</h3>
+</li>
+<li class="slide">
+	<h3>jQuery</h3>
+</li>
+<li class="slide">
+	<h3>Ajax</h3>
+</li>
+</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>2-Day schedule - Day 2</h2>
+<ul>
+	<li class="slide">
+		<h3>Debugging JavaScript</h3>
+	</li>
+	<li class="slide">
+		<h3>APIs</h3>
+	</li>
+	<li class="slide">
+		<h3>Front End / Back End architectures</h3>
+	</li>
+	<li class="slide">
+		<h3>Structuring your Application</h3>
+	</li>
+	<li class="slide">
+		<h3>Intro to Backbone</h3>
+	</li>
+	<li class="slide">
+		<h3>Integrating with Kinvey</h3>
+	</li>
+	<li class="slide">
+		<h3>Building a music-twitter clone</h3>
+	</li>
+</ul>
+</article>
+
+<article class='slide slide-subhead'>
+<h1>What is the Web?</h1>
+<h2 class='slide'>
+The world wide web is a system of interlinked 
+hypertext documents accessed via the Internet. With a 
+web browser, one can view web pages that may contain 
+text, images, videos, and other multimedia and navigate 
+between them via hyperlinks.
+</h2>
+</article>
+
+<article class='slide slide-subhead'>
+<h1>The Web is Content</h1>
+</article>
+
+<article class='slide slide-subhead'>
+<h1>What can you do<br/> on the web?</h1>
+<h2 class='slide'>Just about anything...It's no longer just sites of text. <a href='http://workshop.chromeexperiments.com/bookcase/'>Bookcase</a></h2>
+</article>
+
+<article class='slide slide-subhead'>
+<h1>The web is....</h1>
+<h2 class='slide'>Whatever you want to build.</h2>
+</article>
+
+<article class='slide slide-subhead'>
+<h1>The Good:</h1>
+<h2>If you can dream it,<br/> you can build it<br/>
+...and deliver it to Billions of people instantly
+</h2>
+</article>
+
+
+<article class='slide slide-subhead'>
+<h1>The Bad:</h1>
+<h2>There's a <em>lot</em> to learn</h2>
+</article>
+
+
+<article class='slide slide-subhead'>
+<h1>What is <br/>"Front end"?</h1>
+<h2 class='slide'>
+A set of technologies used on the client.
+</h2>
+</article>
+
+<article class='slide slide-list'>
+<h2>Front-end technologies</h2>
+<ul>
+<li class="slide">
+	<h3>HTML</h3>
+</li>
+<li class="slide">
+	<h3>CSS</h3>
+</li>
+<li class="slide">
+	<h3>JavaScript</h3>
+</li>
+<li class="slide">
+	<h3>Data-transport (XML,JSON, HTML)</h3>
+</li>
+</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>What's the point of each?</h2>
+<ol>
+	<li class='slide'>
+		<h3>HTML <span class='slide'> - Semantics, Content, Information, Data</span></h3>
+	</li>
+	<li class='slide'>
+		<h3>CSS <span class='slide'> - Layout and Styling </span></h3>
+	</li>
+	<li class='slide'>
+		<h3>Javascript <span class='slide'> - Create Dynamism, interaction</span></h3>
+	</li>
+	<li class='slide'>
+		<h3>Data-transport <span class='slide'> - Transmit information, transform into HTML w/ JavaScript </span></h3>
+	</li>
+</ol>
+</article>
+
+
+
+<article class='slide slide-subhead'>
+<h1>What is <br/>"The Client"?</h1>
+<h2 class='slide'>
+ Usually - the browser (Chrome, Firefox, Safari, IE)
+</h2>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>What does the client do (simplified)?</h2>
+<p>Look-up a domain, get an IP address, make a HTTP request, make sub requests, download a page ... </p>
+
+<pre class='prettyprint'>
+nslookup reddit.com
+...
+
+telnet 204.245.162.17 80
+Trying 204.245.162.17...
+Connected to a204-245-162-17.deploy.akamaitechnologies.com.
+Escape character is '^]'.
+GET / HTTP/1.1
+Host: www.reddit.com
+
+...
+
+</pre>
+
+</article>
+
+
+
+<article class='slide slide-list'>
+<h2>.. what does the client do (cont.)?</h2>
+<ul>
+<li class="slide">
+	<h3>Parses the page, creates the DOM</h3>
+</li>
+<li class="slide">
+	<h3>Start downloading assets in parallel (to a per domain limit)</h3>
+</li>
+<li class="slide">
+	<h3>Executes JavaScript as it come across it (page stops rendering at JavaScript)</h3>
+</li>
+<li class="slide">
+	<h3>Finishes parsing DOM / JavaScript</h3>
+</li>
+<li class="slide">
+	<h3>Fires a DOM Ready event (depends on browser)</h3>
+</li>
+<li class="slide">
+	<h3>Finishes downloading pages</h3>
+</li>
+<li class="slide">
+	<h3>Fires window.onload</h3>
+</li>
+</ul>
+<p>
+</article>
+
+
+
+
+<article class='slide slide-subhead'>
+	<h1>HTML</h1>
+	<h2>Hypertext Markup Language</h2>
+	<p>HTML is a markup language, which means you're annotating (marking up) plain text to give it structure and meaning, similar to the way you would underline or make notes in a book.</p>
+</article>
+
+<article class='slide slide-list'>
+<h2>HTML "1.0"</h2>
+<ul>
+	<li class="slide">
+		<h3>Original draft from 1992</h3>
+	</li>
+	<li class="slide">
+		<h3>20 Tags, including: section, h1-h6, p, a, menu, ul, ol, dir, li, dl dt, dd</h3>
+	</li>
+	<li class="slide">
+		<h3>How stuff was displayed was left up to the browser</h3>
+	</li>
+	<li class="slide">
+		<h3>Was more concerned with “Semantic” markup of documents</h3>
+	</li>
+</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>The Browser War, Round 1</h2>
+<ul>
+	<li class="slide">
+		<h3>Mozilla vs. Microsoft.
+		</h3>
+	</li>
+	<li class="slide">
+		<h3>Started adding features fast and furious</h3>
+	</li>
+	<li class="slide">
+		<h3>Lots of incompatabilities</h3>
+			</li>
+</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>XHTML</h2>
+<ul>
+	<li class="slide">
+		<h3>Reaction to “looseness” of HTML</h3>
+	</li>
+	<li class="slide">
+		<h3>A XHTML page is a valid XML document</h3>
+	</li>
+	<li class="slide">
+		<h3>In XHTML Strict, document won’t render if there’s a mistake in the HTML</h3>
+	</li>
+	<li class="slide">
+		<h3>Boring &amp; Painful...Coming down from the W3C</h3>
+	</li>
+</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>HTML5 and The New Hope</h2>
+<ul>
+	<li class="slide">
+		<h3>Previous versions of HTML came from the IETF (Now Defunct) and W3C</h3>
+	</li>
+	<li class="slide">
+		<h3>2004: There was a rebellion over XHTML (non-backwards compatible version of HTML)</h3>
+	</li>
+	<li class="slide">
+		<h3>WHATWG Formed (Apple, Mozilla, Opera)</h3>
+	</li>
+	<li class="slide">
+		<h3>2007: Adopts HTML5, drops XHTML</h3>
+	</li>
+</ul>
+</article>
+
+<article class='slide slide-subhead'>
+	<h3><img src="images/html5-shield-1.jpg" class='top-image'/></h3>
+	<h2>Last numbered version of HTML<br/>
+	Browser makers driving features<br/>
+	Feature coming fast and furious<br/>
+	Browser Wars Round #2</h2>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>New in "HTML5"</h2>
+<ol>
+	<li class="slide">
+		<h3>New Semantic Tags</h3>
+	</li>
+	<li class="slide">
+		<h3>Hardware Accelerated 2D + 3D Graphics</h3>
+	</li>
+	<li class="slide">
+		<h3>CSS3 - visual goodies, transitions</h3>
+	</li>
+	<li class="slide">
+		<h3>Audio, Video</h3>
+	</li>
+	<li class="slide">
+		<h3>WebSockets</h3>
+	</li>
+	<li class="slide">
+		<h3>Local Storage</h3>
+	</li>
+	<li class="slide">
+		<h3>Offline Storage</h3>
+	</li>
+	<li class="slide">
+		<h3>SVG</h3>
+	</li>
+	<li class="slide">
+		<h3>New Events (touch, orientation, accel)</h3>
+	</li>
+	<li class="slide">
+		<h3>Geolocation (via GPS)</h3>
+	</li>
+	<li class="slide">
+		<h3>WebRTC</h3>
+	</li>
+</ol>
+</article>
+
+<article class='slide slide-list'>
+	<h1>Tags</h1>
+	<div class="slide">HTML tags usually come in pairs<br/>
+		<div class="slide example"><em> &lt;head&gt;</em> &nbsp; <em class='slide'> &lt;/head&gt;</em></div>
+		In the industry we refer to these as <em>start tag and end tag</em> or <em>open tag and close tag</em>
+	</div>
+</article>
+
+<article class='slide slide-list'>
+	<h1>Tags</h1>
+	<div> In HTML you can write just the opening tag and it will often work like: <br/>
+			<div class="slide example"><em>&lt;h1&gt;</em> Headline<br/> <em>&lt;p&gt;</em> Body text.</div> 
+	</div>
+	<p class="callout">Don’t do this. Always use open and close or single tags.</p>
+</article>		
+
+<article class='slide slide-list'>
+	<h1>Attributes</h1>
+	<h3 class='slide'>Tell the browser about your content</h3>
+	<ul>
+		<li class='slide'><h3> HTML tags/elements can have attributes
+			</h3>
+		</li>
+		<li class='slide'><h3> Attributes are always specified in the start tag
+			</h3>
+		</li>
+		<li class='slide'><h3> Attributes come in name/value pairs like: name="value"</h3>
+		</li>
+		<li class='slide'>	
+			<h3>&lt;<em>element </em><span class="callout">name = "</span><span class="light">value</span><span class="callout">"<span>&gt;		
+			</h3>
+		</li>
+	</ul>		
+</article>
+
+<article class='slide slide-list'>
+	<h1>Attributes</h1>
+	<p>Available on almost tags</p>
+	<ul>
+		<li class="slide"><h3><span class="callout">CLASS</span> - this defines one or more CSS class names to assign to the tag.</h3>
+		</li>	 
+		<li class="slide"><h3><span class="callout">ID</span> - this defines a unique identifier that uniquely refers to this one tag.</h3> 
+		</li>	
+		<li class="slide"><h3><span class="callout">STYLE</span> - this defines the CSS styles to use for this particular element.<h3>
+		</li>	
+		<li class="slide"><h3>others: href, src, data-*</h3>
+		</li>
+	</ul>
+</article>			
+
+
+<article class='slide slide-accent'>
+<h1>HTML5 Semantic Structure</h1>
+</article>
+
+<article class='slide slide-list'>
+	<h1>HTML5 Semantic Tags</h1>
+	<h3>Most Common Tags</h3>
+	<ul> 
+		<li class='slide'>
+			<h3 >&lt;head&gt; = Meta Info</h3>
+		</li>
+		<li class='slide'>
+			<h3 >&lt;body&gt; = Site Content</h3>
+		</li>
+		<li class='slide'>
+			<h3 >&lt;header&gt; = Header (Head area of the site)</h3>
+		</li>
+		<li class='slide'><h3>&lt;nav&gt; = Navigation (Menu/Navigation Area)
+	 
+			</h3>
+		</li>
+		<li class='slide'><h3>&lt;section&gt;  = Section, organizing similar content
+			</h3>
+		</li>
+		<li class='slide'><h3>&lt;article&gt; = Article, self-contained piece of content
+			</h3>
+		<li class='slide'><h3>&lt;footer&gt;  = Footer Area
+			</h3>
+		</li>
+		<li class='slide'><h3>&lt;aside&gt; = Content ancillary to the main content (sidebar, ad)
+			</h3>
+		</li>
+	
+	</ul>		
+</article>
+
+<article class='slide slide-accent'>
+<h1>how you might use these tags</h1>
+</article>
+
+<article style='background-image:url(images/slashdot.jpg);' class='slide slide-background'>
+</article>
+
+<article style='background-image:url(images/slashdot2.jpg);' class='slide slide-background'>
+</article>
+
+<article style='background-image:url(images/bostinno.jpg);' class='slide slide-background'>
+</article>
+
+<article style='background-image:url(images/bostinno2.jpg);' class='slide slide-background'>
+</article>
+
+<article style='background-image:url(images/listapart.jpg);' class='slide slide-background'>
+</article>
+
+<article style='background-image:url(images/listapart2.jpg);' class='slide slide-background'>
+</article>
+
+<article class='slide slide-subhead'>
+<h1>Writing Good HTML</h1>
+<h2>"A Semantic Chop"</h2>
+</article>
+
+<article class='slide slide-list'>
+	<h1>The Goals</h1>
+	<ul>
+		<li class='slide'>
+			<h3>HTML tags used in Meaningful ways
+			</h3>
+		</li>
+		<li  class='slide'>
+			<h3>Validating markup</h3>
+		</li>
+		<li class='slide'><h3>All dynamic interactions added “unobtrusively” (usually via jQuery)</h3>
+		</li>
+	</ul>		
+</article>
+
+<article class='slide slide-accent'>
+<h1>Reminder! your HTML is not your design <a href='http://csszengarden.com'>CSS Zen Garden</a></h1>
+</article>
+
+<article class='slide slide-subhead'>
+<h1>CSS</h1>
+</article>
+
+<article class="slide slide-list">
+<h1>Cascading Style Sheets</h1>
+<ul>
+<li class="slide">
+	<h3>Used for “presentation” of your HTML</h3>
+</li>
+<li class="slide">
+	<h3>Controls the styles of your page</h3>
+</li>
+<li class="slide">
+	<h3>Also Controls the layout of your page (where stuff is positioned)</h3>
+</li>
+<li class="slide">
+	<h3>Can have different styles different media formats (eg. print and screen) stylesheets for</h3>
+</li>
+</ul>
+</article>
+
+
+<article class="slide slide-subhead">
+<h1>What is a style?</h1>
+<img src='images/css.png'/>
+</article>
+
+
+<article class='slide slide-subhead'>
+<h1>CSS Basics..</h1>
+<h2>You're on your own...</h2>
+</article>
+
+
+<article class="slide slide-list">
+	<h1>CSS3 Properties</h1>
+	<ol>
+		<li class='slide'>
+      <h3>border-radius</h3>
+		</li>	
+		<li class="slide">
+      <h3>box-shadow</h3>
+		</li>
+		<li class="slide">
+      <h3>text-shadow</h3>
+		</li>
+		<li class="slide">
+    <h3><a href='http://www.html5rocks.com/en/tutorials/flexbox/quick/'>flexbox</a></h3>
+		</li>
+		<li class="slide">
+    <h3>rgba</h3>
+		</li>
+		<li class="slide">
+    <h3><a href='http://www.colorzilla.com/gradient-editor/'>background gradients</a></h3>
+		</li>
+	</ol>	
+</article>	
+
+
+
+<article class='slide slide-list'>
+<h2>CSS Transitions Example</h2>
+<a href='http://css3.bradshawenterprises.com/all/'>More Examples</a>
+<textarea class='coder-editor'>
+<style>
+  #box {
+    transition: background-color 2s;
+    -moz-transition: background-color 2s;
+    -webkit-transition: background-color 2s;
+    -ms-transition: background-clor 2s;
+    -o-transition: background-color 2s;
+    width:50px;
+    height:50px;
+    background-color:green;
+  }
+
+  #box:hover {
+    background-color:red;
+
+  }
+</style>
+<div id='box'></div>
+
+</textarea>
+</article>
+
+
+<article class='slide slide-list'>
+  <h2>CSS3 Animations</h2>
+  <ul>
+  	<li class="slide">
+  		<h3>Are defined with keyframes</h3>
+  	</li>
+  	<li class="slide">
+  		<h3>Have a name</h3>
+  	</li>
+  	<li class="slide">
+  		<h3>Can have a number of other properties including direction, repeat, duration</h3>
+  	</li>
+  	<li class="slide">
+    <h3><a href='http://www.w3.org/TR/css3-animations/'>See the spec</a></h3>
+  	</li>
+  </ul>
+</article>
+
+<article class='slide slide-list'>
+  <h2>CSS3 Animations Example</h2>
+  <p>You'll need all your prefixes here! (-webkit, -moz, -ms) - only showing webkit for brevity</p>
+<textarea class='coder-editor'>
+<style>
+
+  @-webkit-keyframes coloranim {
+    0% {
+      background-color:green;
+    }
+    50% {
+      background-color:red;
+    }
+    100% {
+      background-color:blue;
+    }
+  }
+
+  #box:hover { 
+    -webkit-animation-name:none;
+  }
+
+  #box {
+    background-color:black;
+    width:50px;
+    height:50px;
+    -webkit-animation-name: coloranim;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 4;
+    -webkit-animation-direction:alternate;
+    -webkit-animation-timing-function: ease-in-out;
+  }
+</style>
+<div id='box'></div>
+</textarea>
+</article>
+
+
+
+<article class='slide slide-accent'>
+<h1>HTML / CSS Best practicies</h1>
+</article>
+
+
+
+<article class="slide slide-list">
+	<h1>1.Organizing Your CSS</h1>
+	<ol>
+		<li class='slide'>
+			<h3>Start with your reset</h3>
+		</li>	
+		<li class="slide">
+			<h3>Set your body</h3>
+		</li>
+		<li class="slide">
+			<h3>Set your base element styles (p, h1, h2, blockquote)</h3>
+		</li>
+		<li class="slide">
+			<h3>Set your reusable class styles</h3>
+		</li>
+		<li class="slide">
+			<h3>Set your layout styles</h3>
+		</li>
+		<li class="slide">
+			<h3>Set your module styles (additional sub-themes like blogs,custom pages, etc )</h3>
+		</li>
+	</ol>	
+</article>	
+
+<article class='slide slide-accent'>
+<h1>2. Don't write CSS!</h1>
+</article>
+
+
+
+<article class="slide slide-list">
+        <h1>Use a pre-processor</h1>
+<p>Pre-processor will let you write reusable code with abstractions.</p>
+        <ol>
+<li class='slide'>
+<h3>
+<a href='http://lesscss.org/'>LESS</a> - Less CSS
+</h3>
+</li>
+<li class='slide'>
+<h3>
+<a href='http://sass-lang.com/'>Sass</a> - Syntactically Awesome Stylesheets</a>
+</h3>
+</li>
+</ol>	
+</article>	
+
+
+<article class='slide slide-subhead'>
+<h1> <a href='https://github.com/h5bp/html5-boilerplate/blob/master/index.html'>HTML5 Boilerplate</a></h1>
+<h2>Understand and use! (what you need)</h2>
+</article>
+
+
+
+
+
+
+
+
+<article class='slide slide-list'>
+<h2>How to use it?</h2>
+<p>Download a release and modify the index.html with your slide. Slides are created with by adding a class='slide' to any element. CoderDeck areas are created
+	by adding a class of 'coder-editor' to a text area, for example (prettyprint is also bundled, so, as below just use a &lt;pre class='prettyprint'&gt;.. to highlight static code):</p>
+<pre class='prettyprint'>
+&lt;article class='slide slide-list'&gt;
+  &lt;h2&gt;This is a second level heading!&lt;/h2&gt;
+  &lt;p&gt;Here is some descriptive text, followed by a split editor. &lt;/p&gt;
+  &lt;textarea class='coder-editor'&gt;
+    &lt;script&gt;
+       alert("Yay!");
+    &lt;/script&gt; 
+  &lt;textarea&gt;
+&lt;/article&gt;
+</pre>
+
+</article>
+
+
+<!-- Apply a class of "coder-editor-full" along with "coder-editor" to a textarea to make it show up as runnable code -->
+<article class='slide slide-list'>
+<h2>Full Page Code Editor</h2>
+<p>Basic full page code editor is created by adding a class of "coder-editor-full" along with "coder-editor" to a textarea.
+   Press run, then press "back", then modify some code and press "run" again</p>
+
+<textarea class='coder-editor coder-editor-full'>
+<header>
+  <h1>My Site!</h1>
+  <nav><ul>
+    <li><a href='#'>Link 1</a></li>
+    <li><a href='#'>Link 2</a></li>
+  </ul></nav>
+</header>
+
+<section id='content'>
+  <article class='blog-post'>
+    <h1>Blog Post 1</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac elit at nisl sagittis consequat sed eget tellus. Aliquam gravida, nunc sit amet viverra dictum, nibh justo semper massa</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac elit at nisl sagittis consequat sed eget tellus. Aliquam gravida, nunc sit amet viverra dictum, nibh justo semper massa</p>
+  </article>
+</section>
+<footer>
+  <a href='#'>Link 1</a> | <a href='#'>Link 2</a>
+</footer>	
+</textarea>
+</article>
+
+<!-- use a class of gist and a data-gist-id to pull the code example from a gist -->
+<article class='slide slide-list'>
+<h2>Pulling from Gists</h2>
+<p>Use a class of 'gist' and an attribute of data-gist-id for the Gist ID</p>
+<div class='gist' data-gist-classes='coder-editor coder-editor-full' data-gist-id='1262553'></div>
+</article>
+
+<!-- add a "data-coder-template" to use a different template (see the template definitions at the top)
+     add a "data-language" to use a different CodeMirror2 mode other than htmlmixed. Options include "html", "javascript", "css", "xml" and any other mode supported by CodeMirror2
+-->
+<article class='slide slide-list'>
+<h2>Custom template and custom language</h2>
+<p>You can create custom reusable templates for wrapping the editor code with custom &lt;script&gt; tags. You can also specify the mode the editor should display (xml, css, javascript or the default htmlmixed ) </p>
+
+<textarea class='coder-editor' data-coder-template="coderdeck-style-example" data-language="css">
+h1 { color:blue; }
+h2 { color:red;}
+p  { color:pink;}
+.stuff  { color:purple;}
+#my-div { color:teal;}
+</textarea>
+</article>
+
+
+
+<!-- add a "data-coder-instant" to do on-the-fly updating-->
+<article class='slide slide-list'>
+<h2>Instant Update Sample</h2>
+<p>Try modifying any of the HTML on the left, the right side should updated periodically as you type. This is done by adding a class of "coder-editor-instant" to the textarea</p>
+
+<textarea class='coder-editor coder-editor-instant' data-coder-template="coderdeck-style-example" data-language="css">
+h1 { color:blue; }
+h2 { color:red;}
+p  { color:pink;}
+.stuff  { color:purple;}
+#my-div { color:teal;}
+</textarea>
+</article>
+
+
+<!-- Javascript works normally as well, libraries and external css (including jquery) can be included in template -->
+<article class='slide slide-list'>
+<h2>Javascript/jQuery Example</h2>
+<p> Javascript works normally as well, libraries and external css (including jquery) can be included in the coderdeck template.</p>
+<textarea class='coder-editor'>
+<script>
+  $(function() {
+    $(".box").animate({ 
+        'top':"50%", 
+        'left':"50%" });
+  });
+</script>
+<style>
+  .box { 
+    top:0px; left:0px;
+    width:50px; height:50px; 
+    position:absolute; 
+    background-color:red;
+  }
+</style>
+<div class='box'></div>
+</textarea>
+</article>
+
+
+
+<article class='slide slide-list'>
+<h2>Local Storage</h2>
+<p>  If you want your changes to a slide to survive between page reloads you can define a data-save attribute which will save it to the attributes value in localstorage. Make a code change, hit run/save and reload this slide.</p>
+<p> You can also use the same 'data-save'  attribute on mulitiple slides to keep the same code moving forwad</p>
+<textarea class='coder-editor' data-save='dummy'>
+  <h1>This is some dummy content..</h1>
+</textarea>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Solutions</h2>
+<p>If you want to add a solution to an exercise, you can add a coderdeck-solution script tag in the slide </p>
+<textarea class='coder-editor'>
+
+<script>
+    // Display an alert message
+    // if a confirm dialog returns true
+</script>
+</textarea>
+
+<script type='coder-solution'>
+SCRIPT
+  if(confirm("Do you want an alert?")) {
+      alert("Yay!");
+  }
+SCRIPTEND
+</script>
+</article>
+
+<script src='dist/coderdeck.min.js'></script>
+
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

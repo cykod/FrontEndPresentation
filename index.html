@@ -13,6 +13,15 @@
 </head>
 <body class="deck-container">
 
+
+<script type='text/coderdeck' id='coderdeck-style-nothing'>
+CODE
+</script> 	
+
+
+
+
+
 <script type='text/coderdeck' id='coderdeck-default'>
   <html>
     <head>
@@ -23,6 +32,18 @@
     </body>
 </html>
 </script>
+
+
+<script type='text/coderdeck' id='coderdeck-plain'>
+	<html>
+		<title>test</title>
+		<link rel="stylesheet" href="reset.css">
+		<body>
+			CODE
+		</body>
+	</html>
+</script>
+
 
 
 <script type='text/coderdeck' id='coderdeck-css-playground'>
@@ -65,19 +86,16 @@
 	<h3>What is the role of the client?</h3>
 </li>
 <li class="slide">
-	<h3>HTML5 Semantics</h3>
+	<h3>HTML5 &amp; Semantics</h3>
 </li>
 <li class="slide">
-	<h3>CSS / Styling best practices</h3>
+	<h3>CSS, Styling &amp; best practices</h3>
 </li>
 <li class="slide">
 	<h3>Bootstrap / Boilerplate</h3>
 </li>
 <li class="slide">
-	<h3>JavaScript the language + quirks</h3>
-</li>
-<li class="slide">
-	<h3>OOP in JavaScript</h3>
+	<h3>JavaScript the language</h3>
 </li>
 <li class="slide">
 	<h3>jQuery</h3>
@@ -85,17 +103,23 @@
 <li class="slide">
 	<h3>Ajax</h3>
 </li>
+<li class='slide'>
+  <h3>Exercise</h3>
+</li>
 </ul>
 </article>
 
 <article class='slide slide-list'>
 <h2>2-Day schedule - Day 2</h2>
 <ul>
+  <li class='slide'>
+		<h3>Client side templating</h3>
+  </li>
 	<li class="slide">
-		<h3>Debugging JavaScript</h3>
+		<h3>OOP Patterns in JavaScript</h3>
 	</li>
 	<li class="slide">
-		<h3>APIs</h3>
+		<h3>Debugging JavaScript</h3>
 	</li>
 	<li class="slide">
 		<h3>Front End / Back End architectures</h3>
@@ -565,36 +589,164 @@ Host: www.reddit.com
 <img src='images/css.png'/>
 </article>
 
-
-<article class='slide slide-subhead'>
-<h1>CSS Basics..</h1>
-<h2>You're on your own...</h2>
+<article class="slide slide-list">
+<h2>Available selectors</h2>
+<ul>
+	 <li class='slide'>
+		 <h3> name of element (e.g. <em>p, div, h1</em>)</h3>
+	</li>
+	<li class='slide'>
+		<h3>
+		class name preﬁxed with a period (.)<br/>
+		&lt;div class=‘<em>my-class-name</em>’&gt;..&lt;/div&gt;<br/>
+		= <em>.my-class-name</em> { ... }
+	</h3>
+	</li>
+	<li class='slide'>
+		<h3>element id preﬁxed with a pound sign (#)<br/>
+			&lt;div id=‘<em>my-id</em>’&gt;..&lt;/div&gt;<br/>
+			= <em>#my-id</em>{ ... }
+	</h3>
+</li>
+</ul>
 </article>
 
 
+
+<article class='slide slide-list'>
+<h2>Selectors </h2>
+<textarea class='coder-editor coder-editor-split coder-editor-instant' data-coder-template="coderdeck-css-playground" data-language='html'>
+<style>
+
+</style>
+</textarea>
+</article>
+
 <article class="slide slide-list">
-	<h1>CSS3 Properties</h1>
-	<ol>
-		<li class='slide'>
-      <h3>border-radius</h3>
-		</li>	
-		<li class="slide">
-      <h3>box-shadow</h3>
-		</li>
-		<li class="slide">
-      <h3>text-shadow</h3>
-		</li>
-		<li class="slide">
-    <h3><a href='http://www.html5rocks.com/en/tutorials/flexbox/quick/'>flexbox</a></h3>
-		</li>
-		<li class="slide">
-    <h3>rgba</h3>
-		</li>
-		<li class="slide">
-    <h3><a href='http://www.colorzilla.com/gradient-editor/'>background gradients</a></h3>
-		</li>
-	</ol>	
-</article>	
+<h1>Selector combinations </h1>
+<ul>
+	 <li class='slide'>
+		 <h3> Can have a declaration apply to multiple 
+			 styles with a comma (,)</h3>
+			<ul>
+				<li><em>.my-class-one, .my-class-two</em> { color:red; }</li>
+		 	</ul>
+	</li>
+	<li class='slide'>
+		<h3> Can “Cascade” styles with spaces</h3>
+			<ul>
+				<li><pre>&lt;div id='outer'&gt;&lt;p&gt; ... &lt;/p&gt;&lt;/div&gt;</pre>
+			 		<em>#outer p </em> { color:red; } /* only p's inside of outer */
+				</li>
+		 	</ul>
+	</li>
+	<li class='slide'>
+		<h3> Can select only "child" styles with spaces</h3>
+			<ul>
+				<li><pre>&lt;div id='outer'&gt;&lt;div&gt;&lt;div&gt; ... &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</pre>
+					<em>#outer > div </em> { background-color:red; } /* only div's that are direct children of outer */</li>
+		 	</ul>
+	</li>
+	<li class='slide'>
+		<h3>Psudeo-classes that apply to elements in certain conditions</h3>
+			<ul>
+				<li><em>a:hover</em>{ color:blue; } /* only links we are hovering over */<br/>
+					<em>a:visited></em> { color:red; } /* links we've visited already */<br/>
+					<em>p:first-child ></em> { color:red; } /* the first paragraph in a container */<br/>
+				</li>
+			</ul>		
+	</li>
+	<li class='slide'>
+		<h3>Also can select by arbitrary attributes</h3>
+			<ul>
+				<li><em>input[type=radio]</em>{ color:blue; } /* only radio buttons */<br/></li>
+			</ul>	
+	</li>
+</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>Selector Combination Exercise</h2>
+<textarea class='coder-editor coder-editor-split coder-editor-instant' data-coder-template="coderdeck-plain" id='coderdeck-default'>
+<style>
+
+</style>
+<header>
+  <h1>My Site!</h1>
+  <nav><ul>
+    <li><a href='#'>Link 1</a></li>
+    <li><a href='#'>Link 2</a></li>
+  </ul></nav>
+</header>
+
+<section id='content'>
+  <article class='blog-post'>
+    <h1>Blog Post 1</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac elit at nisl sagittis consequat sed eget tellus. Aliquam gravida, nunc sit amet viverra dictum, nibh justo semper massa</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac elit at nisl sagittis consequat sed eget tellus. Aliquam gravida, nunc sit amet viverra dictum, nibh justo semper massa</p>
+  </article>
+  <article class='blog-post'>
+    <h1>Blog Post 1</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac elit at nisl sagittis consequat sed eget tellus. Aliquam gravida, nunc sit amet viverra dictum, nibh justo semper massa</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac elit at nisl sagittis consequat sed eget tellus. Aliquam gravida, nunc sit amet viverra dictum, nibh justo semper massa</p>
+  </article>
+
+</section>
+<footer>
+  <a href='#'>Link 1</a> | <a href='#'>Link 2</a>
+</footer>
+
+</textarea>
+</article> 
+
+
+<article class='slide slide-list'>
+<h2>Cascading - What Color?</h2>
+<textarea class='coder-editor coder-editor' data-coder-template="coderdeck-plain" id='coderdeck-default'>
+<style>
+  p { color:red;}
+  .blue { color:blue; }
+  #menu p { color:black; }
+</style>
+
+<div id="menu">
+  <p class='blue'>This is the paragraph</p>
+</div>
+</textarea>
+</article>
+
+<article class="slide slide-list">
+<h1>Cascading Hierarchy: 999</h1>
+<ul>
+<li class="slide">
+	<h3>Inline style (those defined directly with a style='....' attribute in the tag)</h3>
+</li>
+<li class="slide">
+	<h3>Number of ID selectors (hundreds digit)</h3>
+</li>
+<li class="slide">
+	<h3>Number of Class selectors (tens digit)</h3>
+</li>
+<li class="slide">
+	<h3>Number of tag selectors (ones digit)</h3>
+</li>
+<li class="slide">
+	<h3>Order of appearance last to first</h3>
+</li>
+<li class="slide">
+	<h3>Style inheritance</h3>
+</li>
+</ul>
+</article>
+
+<article class='slide slide-subhead'>
+<h1>Laying out a page w/ CSS</h1>
+<h2>You're on your own...</h2>
+</article>
+
+<article class='slide slide-accent'>
+<h1>CSS3 Stuff</h1>
+</article>
 
 
 
@@ -623,7 +775,6 @@ Host: www.reddit.com
 
 </textarea>
 </article>
-
 
 <article class='slide slide-list'>
   <h2>CSS3 Animations</h2>
@@ -737,159 +888,842 @@ Host: www.reddit.com
 
 
 <article class='slide slide-subhead'>
-<h1> <a href='https://github.com/h5bp/html5-boilerplate/blob/master/index.html'>HTML5 Boilerplate</a></h1>
-<h2>Understand and use! (what you need)</h2>
+<h1> <a href='https://github.com/h5bp/html5-boilerplate/blob/master/index.html'>html5 boilerplate</a></h1>
+<h2>understand and use! (what you need)</h2>
 </article>
 
-
-
-
-
-
-
-
-<article class='slide slide-list'>
-<h2>How to use it?</h2>
-<p>Download a release and modify the index.html with your slide. Slides are created with by adding a class='slide' to any element. CoderDeck areas are created
-	by adding a class of 'coder-editor' to a text area, for example (prettyprint is also bundled, so, as below just use a &lt;pre class='prettyprint'&gt;.. to highlight static code):</p>
-<pre class='prettyprint'>
-&lt;article class='slide slide-list'&gt;
-  &lt;h2&gt;This is a second level heading!&lt;/h2&gt;
-  &lt;p&gt;Here is some descriptive text, followed by a split editor. &lt;/p&gt;
-  &lt;textarea class='coder-editor'&gt;
-    &lt;script&gt;
-       alert("Yay!");
-    &lt;/script&gt; 
-  &lt;textarea&gt;
-&lt;/article&gt;
-</pre>
-
+<article class='slide slide-subhead'>
+<h1> <a href='http://twitter.github.com/bootstrap/'>Twitter Bootstrap</a></h1>
+<h2>Don't reinvent the wheel!</h2>
 </article>
 
+<article class='slide slide-accent'>
+<h1>JavaScript</h1>
+</article>
 
-<!-- Apply a class of "coder-editor-full" along with "coder-editor" to a textarea to make it show up as runnable code -->
 <article class='slide slide-list'>
-<h2>Full Page Code Editor</h2>
-<p>Basic full page code editor is created by adding a class of "coder-editor-full" along with "coder-editor" to a textarea.
-   Press run, then press "back", then modify some code and press "run" again</p>
-
+ <h2>A Little Demo</h2>
+ <p>The goal is to understand everything in here by the end of class today</p>
 <textarea class='coder-editor coder-editor-full'>
-<header>
-  <h1>My Site!</h1>
-  <nav><ul>
-    <li><a href='#'>Link 1</a></li>
-    <li><a href='#'>Link 2</a></li>
-  </ul></nav>
-</header>
-
-<section id='content'>
-  <article class='blog-post'>
-    <h1>Blog Post 1</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac elit at nisl sagittis consequat sed eget tellus. Aliquam gravida, nunc sit amet viverra dictum, nibh justo semper massa</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac elit at nisl sagittis consequat sed eget tellus. Aliquam gravida, nunc sit amet viverra dictum, nibh justo semper massa</p>
-  </article>
-</section>
-<footer>
-  <a href='#'>Link 1</a> | <a href='#'>Link 2</a>
-</footer>	
-</textarea>
-</article>
-
-<!-- use a class of gist and a data-gist-id to pull the code example from a gist -->
-<article class='slide slide-list'>
-<h2>Pulling from Gists</h2>
-<p>Use a class of 'gist' and an attribute of data-gist-id for the Gist ID</p>
-<div class='gist' data-gist-classes='coder-editor coder-editor-full' data-gist-id='1262553'></div>
-</article>
-
-<!-- add a "data-coder-template" to use a different template (see the template definitions at the top)
-     add a "data-language" to use a different CodeMirror2 mode other than htmlmixed. Options include "html", "javascript", "css", "xml" and any other mode supported by CodeMirror2
--->
-<article class='slide slide-list'>
-<h2>Custom template and custom language</h2>
-<p>You can create custom reusable templates for wrapping the editor code with custom &lt;script&gt; tags. You can also specify the mode the editor should display (xml, css, javascript or the default htmlmixed ) </p>
-
-<textarea class='coder-editor' data-coder-template="coderdeck-style-example" data-language="css">
-h1 { color:blue; }
-h2 { color:red;}
-p  { color:pink;}
-.stuff  { color:purple;}
-#my-div { color:teal;}
-</textarea>
-</article>
-
-
-
-<!-- add a "data-coder-instant" to do on-the-fly updating-->
-<article class='slide slide-list'>
-<h2>Instant Update Sample</h2>
-<p>Try modifying any of the HTML on the left, the right side should updated periodically as you type. This is done by adding a class of "coder-editor-instant" to the textarea</p>
-
-<textarea class='coder-editor coder-editor-instant' data-coder-template="coderdeck-style-example" data-language="css">
-h1 { color:blue; }
-h2 { color:red;}
-p  { color:pink;}
-.stuff  { color:purple;}
-#my-div { color:teal;}
-</textarea>
-</article>
-
-
-<!-- Javascript works normally as well, libraries and external css (including jquery) can be included in template -->
-<article class='slide slide-list'>
-<h2>Javascript/jQuery Example</h2>
-<p> Javascript works normally as well, libraries and external css (including jquery) can be included in the coderdeck template.</p>
-<textarea class='coder-editor'>
 <script>
   $(function() {
-    $(".box").animate({ 
-        'top':"50%", 
-        'left':"50%" });
+  var images = [
+    { img: "images/image1.jpg", 
+      title: "This is a drop",
+      url: "http://www.google.com",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus quam, commodo ac posuere non, facilisis et ligula. Praesent elementum sodales leo, non ultrices dolor cursus at. Suspendisse sed ipsum tempor est volutpat commodo nec quis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit" },
+    { img: "images/image2.jpg", 
+      title: "Dog here",
+      url: "http://www.petfinder.com",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus quam, commodo ac posuere non, facilisis et ligula. Praesent elementum sodales leo, non ultrices dolor cursus at. Suspendisse sed ipsum tempor est volutpat commodo nec quis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit" },
+    { img: "images/image3.jpg", 
+      title: "Some sort of building",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus quam, commodo ac posuere non, facilisis et ligula. Praesent elementum sodales leo, non ultrices dolor cursus at. Suspendisse sed ipsum tempor est volutpat commodo nec quis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit" },
+    { img: "images/image4.jpg", 
+     title: "Nightscape",
+     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus quam, commodo ac posuere non, facilisis et ligula. Praesent elementum sodales leo, non ultrices dolor cursus at. Suspendisse sed ipsum tempor est volutpat commodo nec quis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit" }
+    ];
+  
+  $.each(images,function() {
+    var imageInfo = this;
+    
+    var img = $("<img>").attr({'src' : imageInfo.img,
+                     'width' : 128 }).data('properties',this);
+    img.click(function() {
+      var url;
+      if(url = $(this).data('properties').url) {
+       window.open(url,"mywin");
+      } else {
+       window.open(this.src,"mywin","status=0,toolbar=0,width=400,height=400");
+      }
+    });
+    
+    img.hover(function() {
+      $(this).addClass("selected");
+      $("#thumbnails img:not(.selected)").stop().animate({opacity: 0.4});
+
+      $("#details").show();
+      $("#title").text(imageInfo.title);
+      $("#description").text(imageInfo.description);
+
+    },function() {
+      $("#thumbnails img:not(.selected)").stop().animate({opacity: 1.0});
+      $(this).removeClass("selected");
+      
+      $("#details").hide();
+    });
+
+    img.appendTo("#thumbnails");
   });
+  
+});
+  
 </script>
+
+<section id='thumbnails'>
+  
+</section>
+<section id='details' style='display:none;'>
+<h2>Title: <span id='title'></span></h2>
+<p>Description: <span id='description'></span></p>
+</section>
+
 <style>
-  .box { 
-    top:0px; left:0px;
-    width:50px; height:50px; 
-    position:absolute; 
-    background-color:red;
+  #thumbnails img {
+    margin:10px;
+    border:4px solid white;
+  }
+  
+  #thumbnails img:hover {
+    border-color:#CCC;
   }
 </style>
-<div class='box'></div>
+
+
 </textarea>
 </article>
 
 
 
 <article class='slide slide-list'>
-<h2>Local Storage</h2>
-<p>  If you want your changes to a slide to survive between page reloads you can define a data-save attribute which will save it to the attributes value in localstorage. Make a code change, hit run/save and reload this slide.</p>
-<p> You can also use the same 'data-save'  attribute on mulitiple slides to keep the same code moving forwad</p>
-<textarea class='coder-editor' data-save='dummy'>
-  <h1>This is some dummy content..</h1>
+ <h2>Javascript Housekeeping</h2>
+<textarea class='coder-editor'>
+<script>
+  // Two double slashes are one line comments
+
+  /* 
+     Slash star, star slash are multi-line comments
+   */
+
+  // Statements should end in a semi-colon:
+  alert("Statement 1");
+  alert("Statement 2");
+</script>
 </textarea>
 </article>
 
 
 <article class='slide slide-list'>
-<h2>Solutions</h2>
-<p>If you want to add a solution to an exercise, you can add a coderdeck-solution script tag in the slide </p>
+ <h2>Hello World!</h2>
+ <p>Call the built in 'alert' function and have it say "Hello World!" We don't use this all that often (it's ugly) - but it's really useful for debugging.</p>
 <textarea class='coder-editor'>
 
-<script>
-    // Display an alert message
-    // if a confirm dialog returns true
-</script>
+  <script>
+     // Function call to Alert goes here
+  </script>
 </textarea>
-
 <script type='coder-solution'>
-SCRIPT
-  if(confirm("Do you want an alert?")) {
-      alert("Yay!");
-  }
-SCRIPTEND
+  <script>
+    alert("Hello World!");
+  SCRIPTEND
 </script>
 </article>
+
+<article class='slide slide-list'>
+ <h2>Our friend the console and console.log</h2>
+ <p>Puts a result in the console - use Chrome or Firebug (must be open)</p>
+<textarea class='coder-editor' data-save='console-log'>
+
+  <script>
+     console.log(10);
+  </script>
+
+</textarea>
+</article>
+
+<article class='slide slide-list'>
+ <h2>Variables</h2>
+ <p>Let's do some math and some string manipulation and write out to the console.</p>
+<textarea class='coder-editor'>
+  <script>
+     var a = 10;
+     var b = 5;
+
+     // b += 10;
+
+     console.log("A: " + a);
+     console.log("B: " + b);
+     console.log("A + B: " + (a + b))
+
+  </script>
+
+</textarea>
+</article>
+
+<article class='slide slide-list'>
+ <h2>Functions</h2>
+ <p>Created with the "function" keyword, create reusable pieces of functionality.</p>
+<textarea class='coder-editor' data-save='web304-exercise-functions'>
+  <script>
+
+    function sqr(num) {
+       // call console.log on the square of num
+    }
+
+    sqr(10); // Should log 100
+    sqr(5);  // Should log 25
+    sqr(4);  // Should log 16
+  </script>
+</textarea>
+</article>
+
+
+
+<article class='slide slide-list'>
+ <h2>Scope</h2>
+ <p>You can only use variables that are defined in the scope you call them.</p>
+<textarea class='coder-editor'>
+  <script>
+     var a = 10;
+
+     function myFunc() {
+      var c = 200;
+
+       console.log("in myFunc A: " + a);
+       console.log("in myFunc C: " + c);
+     }
+     myFunc();
+
+     console.log("A: " + a);
+     console.log("C: " + c);
+  </script>
+</textarea>
+</article>
+
+<article class='slide slide-list'>
+ <h2>Returning from Functions</h2>
+ <p>Use the return keyword to pass a value back to whatever called the function</p>
+<textarea class='coder-editor' data-save='web304-exercise-saver'>
+  <script>
+
+    function sqr(num) {
+       // return the square of the number
+    }
+
+    console.log(sqr(10)); // Should log 100
+    alert(sqr(5));  // Should alert 25
+
+    var value = sqr(sqr(4));  
+
+    alert(value);  // What is this?
+  </script>
+</textarea>
+</article>
+
+<article class='slide slide-list'>
+ <h2>Timeouts</h2>
+ <p>we can use setTimeout to have something happen later, try it</p>
+<textarea class='coder-editor' data-save='web304-exercise-timeout'>
+  <script>
+
+    var delay = 5000; // Delay in MS
+
+    function callback() {
+         alert("Timer went off!");
+    }
+
+    setTimeout(callback,delay);
+
+  </script>
+</textarea>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Anonymous functions, callbacks</h2>
+ <p>We don't have to give our callback function a name, we can do it anonymously</p>
+<textarea class='coder-editor' data-save='web304-exercise-timer-saver'>
+  <script>
+
+
+    setTimeout(function() {
+      console.log('Timer1');
+    },5000);
+
+    // Add a second timer, called 5 second after the first
+
+  </script>
+</textarea>
+</article>
+
+<article class='slide slide-list'>
+<h2>Why callbacks?</h2>
+<p>A lot of stuff on the web happens "Asynchronously" - AJAX, user actions, etc</p>
+<textarea class='coder-editor' data-save='web304-exercise-clickerama'>
+  <button id='my-button'>Click me Yo!</button>
+  <script>
+
+    var clickCount = 0;
+
+    // This here is some jQuery, don't worry about it
+    // We'll cover it in a few slides.
+    $("#my-button").click(function() {
+      clickCount += 1;
+
+      alert("Time's I've been clicked:" + clickCount);
+    });
+  </script>
+</textarea>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Arrays</h2>
+<ul>
+	<li class="slide">
+		<h3>Usually created with the bracket [ ] operator: </h3>
+                <pre class='prettyprint'>
+var arr = [ 10, 20, 30 ];
+</pre>
+	</li>
+	<li class="slide">
+          <h3>Pull out a value using square brackets [] starting at 0:</h3>
+              <pre class='prettyprint'>
+arr[0] // 10
+arr[1] // 20
+</pre>
+	</li>
+	<li class="slide">
+		<h3>get the number of entries with .length</h3>
+                <pre class='prettyprint'>
+arr.length // 3                
+</pre>
+	</li>
+</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>Playing with arrays</h2>
+
+<textarea class='coder-editor' data-save='web304-exercise-arrays'>
+  <script>
+
+    var myArray = [ 0, 10, 20, 30, 40 ];
+
+    console.log("myArray[2] is:" + myArray[2]);
+
+    var index = 2;
+
+    // Using a variable as an index
+    console.log("myArray[" + index + "] is:" + myArray[index]);
+
+    // Showing all variable values with jQuery $.each and a callback
+    // Stored in this
+  /*  $.each(myArray,function(idx) {
+      console.log("myArray[" + idx + "] is:" + this);
+    }); */
+
+  </script>
+</textarea>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Objects</h2>
+<ul>
+	<li class="slide">
+		<h3>A way to store data and methods together. </h3>
+	</li>
+	<li class="slide">
+		<h3>Array was an example of a built in object</h3>
+	</li>
+	<li class="slide">
+          <h3>Can create with JSON notation:</h3>
+          <pre class='prettyprint'>
+var obj = { a: 1, b: 2 };
+</pre>
+	</li>
+	<li class="slide">
+		<h3>Access the same as arrays - with square brackets.</h3>
+          <pre class='prettyprint'>
+obj['a'] // 1 
+obj['b'] // 2
+</pre>
+
+	</li>
+	<li class="slide">
+		<h3>Can also access with the dot operator</h3>
+          <pre class='prettyprint'>
+obj.a // 1
+obj.b // 2
+</pre>
+	</li>
+        <li class="slide">
+        	<h3>Can also have functions as properties</h3>
+        </li>
+        <li class="slide">
+        	<h3>Those functions can use the this property when called</h3>
+        </li>
+</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>Objects</h2>
+
+<textarea class='coder-editor' data-save='web304-exercise-objects'>
+  <script>
+    var myObject = { 'a' : 10,
+                     'b' : 'Stringer',
+                     'c' : 20
+                   };
+
+   // Try pulling out various pieces of myObject using
+   // both square brackets and the dot operator
+
+    alert(myObject.a);
+
+  </script>
+</textarea>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Conditionals</h2>
+<ul>
+<li class="slide">
+	<h3>Things in javascript are either true or not true.</h3>
+</li>
+<li class="slide">
+	<h3>0, false, null, "" are all false</h3>
+</li>
+<li class="slide">
+	<h3>Everything else is true.</h3>
+</li>
+<li class="slide">
+  <h3>Use operands to check relationship between two values:</h3>
+  <pre class='prettyprint'>
+==, ===, <=, >=, !=
+
+1 == 2 // false
+1 == 1 // true
+  </pre>
+</li>
+<li class="slide">
+  <h3>Basic conditionals:</h3>
+  <ul>
+    <li class="slide">
+      <pre>if(condition) { }</pre>
+    </li>
+    <li class="slide">
+      <pre>if(condition) { } else { }</pre>
+    </li>
+    <li class="slide">
+      <pre>if(condition) { } else if { } else { }</pre>
+    </li>
+  </ul>
+</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>Conditional Exercise</h2>
+<p>Use a conditional to check if a user confirmed a ok/cancel question. Then use prompt and test against a return value. </p>
+
+<textarea class='coder-editor' data-save='web304-exercise-conditional'>
+  <script>
+    console.log(confirm("Really delete everything?"));
+    console.log(prompt("Delete how many items?"));
+  </script>
+</textarea>
+</article>
+
+<article class='slide slide-list'>
+<h2>jQuery Basics</h2>
+<ul>
+	<li class="slide">
+		<h3>Everything is “namespaced” inside of the jQuery object, which is aliased with “$”</h3>
+	</li>
+	<li class="slide">
+		<h3>...which means everything you do in jQuery starts with a $</h3>
+	</li>
+	<li class="slide">
+		<h3>Uses CSS selectors for picking pieces of the DOM out.</h3>
+	</li>
+</ul>
+</article>
+
+
+
+
+<article class='slide slide-subhead'>
+<h1>Docs are your Friend</h1>
+<h2>Get comfortable with <a href='http://docs.jquery.com'>docs.jquery.com</a></h2>
+</article>
+
+<article class='slide slide-list'>
+<h2>Loading jQuery</h2>
+<h3>Include from a CDN or locally</h3>
+<pre class='prettyprint'>
+&lt;script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'&gt;&lt;/script&gt;
+</pre>
+<h3>Or</h3>
+<pre class='prettyprint'>
+&lt;script src='js/jquery.min.js'&gt;&lt;/script&gt;
+</pre>
+<p>Need to make sure we have the file in the right location, can view in browser if there's a problem.</p>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Using jQuery</h2>
+<p>Since we often include Javscript in the head of the document, we need to make sure we wait until the
+page is loaded before we use it. We can use the jQuery bind function to load stuff at the appropriate point.   </p>
+<pre class='prettyprint'>
+&lt;script&gt;
+$(document).on("ready",function() {
+  // Dom Loaded
+});
+&lt;/script&gt;
+</pre>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Why this is important..</h2>
+<textarea class='coder-editor'>
+<script>
+  $("#header").html("Modified Header");
+</script>
+<h2 id='header'>A Header</h2>
+</textarea>
+</article>
+
+<article class='slide slide-list'>
+<h2>Shorthand </h2>
+<p>Since this is so common, we can use a shorthand for this of $(function() { }) ... </p>
+<pre class='prettyprint'>
+&lt;script&gt;
+$(function() {
+  // Dom Loaded
+});
+&lt;/script&gt;
+</pre>
+</article>
+
+ <article class='slide slide-list'>
+  <h2>Basic selection + manipulation </h2>
+  <p>Let's try out $.text, $.html, $.hide, $.show,  $.css, $.attr, $.addClass, $.hasClass, $.removeClass
+   <a href='http://api.jquery.com/category/selectors/'>Selector Docs</a> / <a href='http://api.jquery.com/category/manipulation/'>Manipulation Docs</a>
+</p>
+<textarea class='coder-editor'>
+<script>
+$(function() {
+
+
+});
+</script>
+<header>
+   <h1>Site Header</h1>
+</header>
+<nav id='main-nav'>
+  <a href='#'>Item 1</a> <a href='#'>Item 2</a> <a href='#'>Item 3</a>
+</nav>
+<section>
+  <article>
+  <h1 class='article-header'>Title</h1>
+  <p>Lorem Ipsum Dolor Sic Amet</p>
+  </article>
+  <article>
+    <h1  class='article-header'>Title 2</h1>
+    <p>Lorem Ipsum Dolor Sic Amet</p>
+  </article>
+</section>
+</textarea>
+
+</article>
+
+<article class='slide slide-list'>
+  <h2>Some basic DOM insertion</h2>
+  <p>Let's try out creating elements with $(), then using $.before, $.after, $.append, $.prepend, $.wrap, $.appendTo, both with text and elements.</p>
+<textarea class='coder-editor'>
+<script>
+$(function() {
+
+
+});
+</script>
+<header>
+   <h1>Site Header</h1>
+</header>
+<nav id='main-nav'>
+  <a href='#'>Item 1</a> <a href='#'>Item 2</a> <a href='#'>Item 3</a>
+</nav>
+<section>
+  <article>
+  <h1 class='article-header'>Title</h1>
+  <p>Lorem Ipsum Dolor Sic Amet</p>
+  </article>
+  <article>
+    <h1  class='article-header'>Title 2</h1>
+    <p>Lorem Ipsum Dolor Sic Amet</p>
+  </article>
+</section>
+</textarea>
+</article>
+
+
+
+<article class='slide slide-list'>
+<h2>Fun Stuff: Animation and transforms</h2>
+ <p> $.fadeOut, $.fadeIn, $.slideDown, $.slideUp, $.toggle, $.stop, $.animate</p>
+<textarea class='coder-editor'>
+<script>
+$(function() {
+
+
+});
+</script>
+
+
+&lt;style&gt;
+  .box { 
+    position:absolute; 
+    width:100px; 
+    height:100px;
+    background-color:red;
+    }
+
+  #box2 { right:0px; }
+&lt;/style&gt;
+
+&lt;div class='box' id='box1'&gt;&lt;/div&gt;
+&lt;div class='box' id='box2'&gt;&lt;/div&gt;
+
+</textarea>
+</article>
+
+<article class='slide slide-list'>
+<h2>Events</h2>
+<p>$.click, $.on, $.off, $.hover </p>
+<textarea class='coder-editor' >
+<script>
+
+$(function() {
+
+
+});
+
+</script>
+
+
+&lt;style&gt;
+  .box { 
+    position:absolute; 
+    width:100px; 
+    height:100px;
+    background-color:red;
+    }
+
+  #box2 { right:0px; }
+&lt;/style&gt;
+
+&lt;div class='box' id='box1'&gt;&lt;/div&gt;
+&lt;div class='box' id='box2'&gt;&lt;/div&gt;
+
+</textarea>
+</article>
+
+
+<article class='slide slide-list'>
+ <h2>Demo Revisited</h2>
+ <p>The goal is to understand everything in here by the end of class today</p>
+<textarea class='coder-editor coder-editor-full'>
+<script>
+  $(function() {
+  var images = [
+    { img: "images/image1.jpg", 
+      title: "This is a drop",
+      url: "http://www.google.com",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus quam, commodo ac posuere non, facilisis et ligula. Praesent elementum sodales leo, non ultrices dolor cursus at. Suspendisse sed ipsum tempor est volutpat commodo nec quis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit" },
+    { img: "images/image2.jpg", 
+      title: "Dog here",
+      url: "http://www.petfinder.com",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus quam, commodo ac posuere non, facilisis et ligula. Praesent elementum sodales leo, non ultrices dolor cursus at. Suspendisse sed ipsum tempor est volutpat commodo nec quis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit" },
+    { img: "images/image3.jpg", 
+      title: "Some sort of building",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus quam, commodo ac posuere non, facilisis et ligula. Praesent elementum sodales leo, non ultrices dolor cursus at. Suspendisse sed ipsum tempor est volutpat commodo nec quis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit" },
+    { img: "images/image4.jpg", 
+     title: "Nightscape",
+     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus quam, commodo ac posuere non, facilisis et ligula. Praesent elementum sodales leo, non ultrices dolor cursus at. Suspendisse sed ipsum tempor est volutpat commodo nec quis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit" }
+    ];
+  
+  $.each(images,function() {
+    var imageInfo = this;
+    
+    var img = $("<img>").attr({'src' : imageInfo.img,
+                     'width' : 128 }).data('properties',this);
+    img.click(function() {
+      var url;
+      if(url = $(this).data('properties').url) {
+       window.open(url,"mywin");
+      } else {
+       window.open(this.src,"mywin","status=0,toolbar=0,width=400,height=400");
+      }
+    });
+    
+    img.hover(function() {
+      $(this).addClass("selected");
+      $("#thumbnails img:not(.selected)").stop().animate({opacity: 0.4});
+
+      $("#details").show();
+      $("#title").text(imageInfo.title);
+      $("#description").text(imageInfo.description);
+
+    },function() {
+      $("#thumbnails img:not(.selected)").stop().animate({opacity: 1.0});
+      $(this).removeClass("selected");
+      
+      $("#details").hide();
+    });
+
+    img.appendTo("#thumbnails");
+  });
+  
+});
+  
+</script>
+
+<section id='thumbnails'>
+  
+</section>
+<section id='details' style='display:none;'>
+<h2>Title: <span id='title'></span></h2>
+<p>Description: <span id='description'></span></p>
+</section>
+
+<style>
+  #thumbnails img {
+    margin:10px;
+    border:4px solid white;
+  }
+  
+  #thumbnails img:hover {
+    border-color:#CCC;
+  }
+</style>
+
+
+</textarea>
+</article>
+
+
+
+<article class='slide slide-list'>
+<h2>Putting it all together</h2>
+<p>Let's use two buttons to increase and decrease a counter.</p>
+
+<textarea class='coder-editor' data-save='web304-exercise-finale'>
+  <button id='increase'>Increase</button>
+  <button id='decrease'>Decrease</button>
+
+  <div id='counter'>0</div>
+  <script>
+
+    var counterValue = 0;
+
+    // Use the click method on $("#increase").click(function() { ... });
+    // Use console.log to map the value
+
+    // Next use the click method on #decrease to decrease the counter
+
+    // Now use the html() method to set the value of coutner
+
+    // Now make sure we don't go under 0 or over 10
+  </script>
+</textarea>
+</article>
+
+<article class='slide slide-list'>
+<h2>Plugins</h2>
+<p>Let's use the cycle plugin: <a href='http://jquery.malsup.com/cycle/'>http://jquery.malsup.com/cycle/</a> (images from <a href='http://lorempixel.com'>http://lorempixel.com</a>)</p>
+<textarea class='coder-editor' data-coder-template="coderdeck-style-nothing">
+<html>
+  <head>
+    <!-- We include jquery -->
+    <script src='dist/jquery.min.js'></script>
+    <!-- We include the plugin -->
+    <script src='dist/jquery.cycle.all.js'></script>
+  </head>
+  <body>
+    <div id='slideshow'>
+      <img src='images/image1.jpg'/>
+      <img src='images/image2.jpg'/>
+      <img src='images/image3.jpg'/>
+      <img src='images/image4.jpg'/>
+    </div>
+    <script>
+      $(document).ready(function() {
+        $('#slideshow').cycle();
+        });     
+    </script>
+  </body>
+</textarea>
+</article>
+
+
+
+<article class='slide slide-list'>
+ <h2>Ajax</h2>
+ <p><a href='http://api.jquery.com/jQuery.ajax/'>$.ajax</a>, $.get, $.post, $.getJSON </p>
+<textarea class='coder-editor'>
+<script>
+$(function() {
+
+var ajax = $.get("names.json",function(data) {
+  alert(data);
+});
+
+});
+
+</script>
+
+</textarea>
+
+
+ </article>
+
+ <article class='slide'>
+ <h2>JSONp</h2>
+ <p>Ajax is same-domain only. So there's a hack to pull data across domains called $.getScript </p>
+ <textarea class='coder-editor'>
+<script>
+$(function() {
+ var username = 'aplusk';
+ var count = 10;
+ // aplusk.json
+ $.getJSON('http://twitter.com/statuses/user_timeline/' + username + '.json?callback=?',
+	  function(data) {
+		alert(data);
+		console.log(data);
+	  });
+});
+</script>
+
+</textarea>
+</article>
+ 
+ <article class='slide'>
+ <h2>Project</h2>
+<ul>
+	<li class="slide">
+		<h3>Download Boilerplate</h3>
+	</li>
+	<li class="slide">
+		<h3>Download Bootstrap</h3>
+	</li>
+	<li class="slide">
+		<h3>Find a JavaScript API or two - perferably JSONp</h3>
+	</li>
+	<li class="slide">
+		<h3>Create a Mashup using Bootstrap to style</h3>
+	</li>
+</ul>
+</textarea>
+</article>
+
+
+
+
+
 
 <script src='dist/coderdeck.min.js'></script>
 

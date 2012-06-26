@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Front End Development</title>
+	<meta name="viewport" content="width=1024">
+
+        <link rel="stylesheet" href="dist/coderdeck-core.min.css" type="text/css">
+	<link rel="stylesheet" id='style-theme-link' href="dist/coderdeck.css" type="text/css" >
+
+	<script src='dist/jquery.min.js'></script>
+	<script src="dist/modernizr.js"></script>
+</head>
+<body class="deck-container">
+
+
+<script type='text/coderdeck' id='coderdeck-style-nothing'>
+CODE
+</script> 	
+
+
+
+
+
+<script type='text/coderdeck' id='coderdeck-default'>
+  <html>
+    <head>
+      <script src='dist/jquery.min.js'>SCRIPTEND
+      <script src='dist/jquery.mustache.js'>SCRIPTEND
+      <script src='dist/underscore.js'>SCRIPTEND
+      <script src='dist/backbone.js'>SCRIPTEND
+    </head>
+    <body>
+	    CODE
+    </body>
+</html>
+</script>
+
+
+<script type='text/coderdeck' id='coderdeck-plain'>
+	<html>
+		<title>test</title>
+		<body>
+			CODE
+		</body>
+	</html>
+</script>
+
+
+
+<script type='text/coderdeck' id='coderdeck-css-playground'>
+	<html>
+		<title>test</title>
+			CODE
+		<body>
+			<h1>I'm a H1 heading</h1>
+			<h2>I'm a H2 heading</h2>
+			<p>Pargraph of text &lt;p&gt;</p>
+			<div class='stuff'>&lt;div&gt; with class "stuff"</div>
+			<div id='my-div'>&lt;div&gt; with id "my-div"</div>
+		</body>
+	</html>
+</script>
+
+
+<article class='slide slide-subhead'>
+<h1>Front End Development</h1>
+<h2>Day 2<br/>
+  Pascal Rettig / CTO at <a href='http://www.fundraise.com'>Fundraise.com</a> / <a href='http://twitter.com/cykod'>@cykod</a><br/>
+  <a href='http://bitly.com/bss-frontend2'>http://bitly.com/bss-frontend2</a>
+</h2>
+</article>
+
+<article class='slide slide-list'>
+<h2>2-Day schedule - Day 2</h2>
+<ul>
+  <li class='slide'>
+		<h3>Client side templating</h3>
+  </li>
+	<li class="slide">
+		<h3>OOP Patterns in JavaScript</h3>
+	</li>
+	<li class="slide">
+		<h3>Debugging JavaScript</h3>
+	</li>
+	<li class="slide">
+		<h3>Front End / Back End architectures</h3>
+	</li>
+	<li class="slide">
+		<h3>Intro to Backbone</h3>
+	</li>
+	<li class="slide">
+		<h3>Integrating with Kinvey</h3>
+	</li>
+	<li class="slide">
+		<h3>Building a music-twitter clone</h3>
+	</li>
+</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>Client side templating</h2>
+<ul>
+	<li class="slide">
+		<h3>Appending HTML using jQuery gets old quick</h3>
+	</li>
+	<li class="slide">
+		<h3>Wouldn't be nice to use templating like in Rails?</h3>
+	</li>
+	<li class="slide">
+                <h3><a href='http://underscorejs.org/'>Underscore</a></h3>
+	</li>
+	<li class="slide">
+                <h3><a href='http://mustache.github.com/'>Mustache</a></h3>
+	</li>
+</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>Rendering with Mustache</h2>
+<textarea class='coder-editor coder-editor-full'>
+<script>
+$(function() {
+  var search = encodeURIComponent("San Jose");
+  $.getJSON('http://api.discogs.com/database/search?callback=?&q=' + search,function(response) {
+     var html = $("#album-template").mustache({ albums: response.data.results });
+
+     $("#container").append(html);
+  });
+});
+
+</script> 
+
+<script type='mustache' id='album-template'>
+<ul>
+  {{#albums}}
+  <li>
+    <img src='{{thumb}}' width='64'/> {{title}}  
+    {{#year}} / Released {{year}} {{/year}}
+  </li>
+  {{/albums}}
+</ul>
+</script>
+
+<div id='container'>
+
+</div>
+
+</textarea>
+</article>
+
+<article class='slide slide-list'>
+<h2>OOP In Javascript: JSON</h2>
+<p>Good: easy. Bad: each object separate</p>
+<textarea class='coder-editor coder-editor-full'>
+<script>
+
+var dog1 = {
+    name: "spot",
+    speak: function() { $("<div>").text(this.name + ": " + "Woof").appendTo("body"); }
+  };
+
+dog1.speak();
+dog1.speak();
+
+</script> 
+
+
+</textarea>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>OOP In Javascript: Constructor + Prototype</h2>
+<p>Good: fast, no memory leak. Bad: no private methods, closure</p>
+<textarea class='coder-editor coder-editor-full'>
+<script>
+var Dog = function(name) {
+  this.name = name;
+}
+
+Dog.prototype.speak = function() { 
+  $("<div>").text(this.name + ": " + "Woof").appendTo("body"); 
+};
+
+var dog1 = new Dog("spot"),
+    dog2 = new Dog("frank");
+
+dog1.speak();
+dog2.speak();
+
+dog2.name = "billy";
+dog2.speak();
+
+</script> 
+
+
+</textarea>
+</article>
+
+<article class='slide slide-list'>
+<h2>OOP In Javascript: Constructor</h2>
+<p>Good: closure, data-hiding. Bad: slower, more memory</p>
+<textarea class='coder-editor coder-editor-full'>
+<script>
+var Dog = function(name) {
+  this.speak = function() {
+    $("<div>").text(name + ": " + "Woof").appendTo("body"); 
+  }
+}
+
+var dog1 = new Dog("spot"),
+    dog2 = new Dog("frank");
+
+dog1.speak();
+dog2.speak();
+
+dog2.name = "billy";
+dog2.speak();
+
+</script> 
+
+
+</textarea>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Debugging JavaScript</h2>
+<ul>
+<li class="slide">
+        <h3><a href='sample/blockbreak.html'>Sample File</a></h3>
+</li>
+<li class="slide">
+	<h3>Watches</h3>
+</li>
+<li class="slide">
+	<h3>Step Debugging</h3>
+</li>
+<li class="slide">
+	<h3>Network Requests</h3>
+</li>
+<li class="slide">
+	<h3>Profiling<h3>
+</li>
+</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>Front-end / Back-end Architectures</h2>
+<ol>
+<li class="slide">
+	<h3>HTML Links and Forms - little to no JavaScript, no client side rendering</h3>
+</li>
+<li class="slide">
+	<h3>Ajax - Some JavaScript, still server-side rendering</h3>
+</li>
+<li class="slide">
+	<h3>JavaScript MVC - Generally only client side rendering</h3>
+</li>
+<li class="slide">
+	<h3>Hybrid - Both client and server-side rendering</h3>
+</li>
+</ol>
+</article>
+
+
+<article class='slide slide-subhead'>
+<h1>Which is best?</h1>
+<h2 class='slide'>
+ It depends on the application.
+</h2>
+</article>
+
+<article class='slide slide-list'>
+<h2>Backbone.js is a JavaScript MVC-ish framework</h2>
+<ol>
+<li class="slide">
+        <h3>Provides a way to structure and organize your JavaScript</h3>
+</li>
+<li class="slide">
+        <h3>Makes it easier to build larger JavaScript applictions</h3>
+</li>
+<li class="slide">
+        <h3>Has a hard dependency on <a href='http://underscorejs.org/'>underscore.js</a></h3>
+</li>
+<li class="slide">
+        <h3>Has a nice, documented code-base at <a href='http://backbonejs.org/'>Backbonejs.org</a></h3>
+</li>
+<li class='slide'>
+        <h3>Canonical <a href='http://backbonejs.org/examples/todos/index.html'>ToDo example</a></h3>
+</li>
+</ol>
+</article>
+
+<article class='slide slide-list'>
+<h2>Rendering with Mustache <a href='backbone-example.html'>self-contained</a></h2>
+<textarea class='coder-editor coder-editor-full'>
+
+<script>
+$(function() {
+
+  var Album = Backbone.Model.extend({});
+
+  var AlbumCollection = Backbone.Collection.extend({
+    model: Album
+  });
+
+
+  var AlbumCollectionView = Backbone.View.extend({
+    tagName: "ul",
+    render: function() {
+      $(this.el).empty();
+      this.collection.each(function(album) {
+        $(this.el).append(new AlbumView({model: album }).render().el);
+      },this);
+      return this;
+    }
+  });
+
+  var AlbumView = Backbone.View.extend({
+    tagName: "li",
+
+    initialize: function(options) {
+      _.bindAll(this,"render");
+      this.model.on("change",this.render);
+    },
+
+    render: function() {
+      $(this.el).empty()
+                .append($("#album-template").mustache(this.model.attributes));
+      return this;
+    }
+  });
+
+  var albums = null;
+
+  var search = encodeURIComponent("San Jose");
+  $.getJSON('http://api.discogs.com/database/search?callback=?&q=' + search,function(response) {
+
+     albums = window.albums = new AlbumCollection(response.data.results);
+
+     $("#container").append(new AlbumCollectionView({ collection: albums }).render().el);
+  });
+});
+
+</script> 
+
+<script type='mustache' id='album-template'>
+<div>
+  <img src='{{thumb}}' width='64'/> {{title}}
+  {{#year}} / Released {{year}} {{/year}}
+</div>
+</script>
+
+<div id='container'>
+
+</div>
+
+</textarea>
+</article>
+
+<article class='slide slide-list'>
+<h2>Kinvey</h3>
+<ul>
+<li class="slide">
+        <h3>A service for storing data in the cloud</h3>
+</li>
+<li class="slide">
+        <h3>Can push and pull arbitrary data in and out</h3>
+</li>
+<li class="slide">
+        <h3>Has a JavaScript API</h3>
+</li>
+<li class="slide">
+        <h3><a href='kinvey-example.html'>Backbone w/ Kinvey</a></h3>
+</li>
+</article>
+
+
+<article class='slide slide-subhead'>
+<h1>Facebook</h1>
+</article>
+
+<article class='slide slide-list'>
+<h2>First: Facebook Javascript SDK</h2>
+<p>Facebook has a number of useful API's, we'll be using two:<p>
+<ol>
+	<li class='slide'><h3><a target='_blank' href='http://developers.facebook.com/docs/reference/javascript/'>Facebook Javscript SDK</a></h3>
+		<p>A way of interfacing with Facebook entirely via Javascript (Yay!)</p>
+	</li>
+
+	<li class='slide'><h3><a target='_blank' href='http://developers.facebook.com/docs/reference/api/'>Facebook Graph API</a></h3>
+	  <p>Their main API for accessing and posting data</p>
+	</li>
+	<li class='slide'><h3>All require we make a new facebook application</h3></li>
+</ol>
+</article>
+
+
+
+<article class='slide  slide-list'>
+<h2>Facebook Javascript API Basics</h2>
+<p>Api Setup (After creating an application here: <a href='https://developers.facebook.com/apps'>https://developers.facebook.com/apps</a><p>
+<pre>
+&lt;div id="fb-root"&gt;&lt;/div&gt;
+&lt;script src="http://connect.facebook.net/en_US/all.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  FB.init({
+    appId  : 'YOUR APP ID',
+    status : true, // check login status
+    cookie : true, // enable cookies to allow the server to access the session
+    xfbml  : true, // parse XFBML
+    channelUrl : 'http://WWW.MYDOMAIN.COM/channel.html', // channel.html file
+    oauth  : true // enable OAuth 2.0
+  });
+&lt;/script&gt;
+</pre>
+<p>
+	Channel.html file:</p>
+<pre>
+ &lt;script src="http://connect.facebook.net/en_US/all.js"&gt;&lt;/script&gt;
+</pre>
+
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Facebook Javascript API Basics #2</h2>
+<p>Then, we can force a login:</p>
+<pre>
+&lt;script&gt;
+FB.login(function(response) {
+   if (response.authResponse) {
+     console.log('Welcome!  Fetching your information.... ');
+     alert("Ur Logged in!");
+   } else {
+     console.log('User cancelled login or did not fully authorize.');
+   }
+ }, {scope: 'email'});
+&lt;/script&gt;
+</pre>
+<p>after we're logged in we can call the Graph API:</p>
+
+<pre>
+&lt;script&gt;
+     FB.api('/me', function(response) {
+       console.log('Good to see you, ' + response.name + '.');
+     });
+&lt;/script&gt;
+</pre>
+<p>
+
+</article>
+
+<article class='slide  slide-list'>
+<h2>Graph API</h2>
+<ol>
+	<li class='slide'><h3>The preferred method to pull data in and out of facebook</h3></li>
+	<li class='slide'><h3>Reasonably well documented: <a target='_blank' href='http://developers.facebook.com/docs/reference/api/'>Graph API</a></h3></li>
+	<li class='slide'><h3>Everything has a graph id - either a numeric ID or a name: <a href='http://graph.facebook.com/pascalrettig'>http://graph.facebook.com/pascalrettig</a> or <a href='http://graph.facebook.com/678578882'>'http://graph.facebook.com/678578882</a></h3></li>
+
+</ol>
+</article>
+
+<article class='slide slide-subhead'>
+<h1>Before we go too much further...</h1>
+<h2>Let's play around with the Facebook Graph Api via <br/>
+	<a target='_blank' href='http://developers.facebook.com/tools/explorer/'>Graph API Explorer</a></h2>
+
+</article>
+
+<article class='slide slide-list'>
+<h2>Let's connect With Facebook</h2>
+<textarea class='coder-editor code-editor-full'>
+&lt;div id="fb-root"&gt;&lt;/div&gt;
+&lt;script src="http://connect.facebook.net/en_US/all.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  FB.init({
+    appId  : '186704188064658',
+    status : true, // check login status
+    cookie : true, // enable cookies to allow the server to access the session
+    xfbml  : true, // parse XFBML
+    channelUrl : 'channel.html', // channel.html file
+    oauth  : true // enable OAuth 2.0
+  });
+ 
+ 
+function clicker() {
+ FB.login(function(response) {
+   if (response.authResponse) {
+     console.log('Welcome!  Fetching your information.... ');
+     FB.api('/me', function(response) {
+       alert('Good to see you, ' + response.name + '.');
+     });
+  }
+});
+ 
+}
+ 
+  
+&lt;/script&gt;
+  
+&lt;a href='javascript:void(0);' onclick='clicker();'&gt;Click Me to Connect!&lt;/a&gt;
+</textarea>
+
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Let's grab some more data, and the print it out</h2>
+<p>We can access the data variable in the console via: $("iframe")[0].contentWindow.responseData</p>
+<textarea class='coder-editor code-editor-full' >
+&lt;div id="fb-root"&gt;&lt;/div&gt;
+&lt;script src="http://connect.facebook.net/en_US/all.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  FB.init({
+    appId  : '186704188064658',
+    status : true, // check login status
+    cookie : true, // enable cookies to allow the server to access the session
+    xfbml  : true, // parse XFBML
+    channelUrl : 'channel.html', // channel.html file
+    oauth  : true // enable OAuth 2.0
+  });
+
+ 
+function clicker() {
+ FB.login(function(response) {
+   if (response.authResponse) {
+     console.log('Welcome!  Fetching your information.... ');
+     FB.api('/me/friends', function(response) {
+        console.log(response);
+     });
+  }
+});
+ 
+}
+ 
+&lt;/script&gt;
+  
+&lt;a href='javascript:void(0);' onclick='clicker();'&gt;Click Me to Connect!&lt;/a&gt;
+
+</textarea>
+
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Refactor the Application</h2>
+<p>Let's clean up our Javascript a little bit with the module pattern.</p>
+
+<textarea class='coder-editor code-editor-full' >
+&lt;link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css"&gt;
+&lt;script src='http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js'&gt;END   
+
+&lt;div id="fb-root"&gt;&lt;/div&gt;
+&lt;script src="http://connect.facebook.net/en_US/all.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  FB.init({
+    appId  : '186704188064658', status : true, cookie : true, xfbml  : true, channelUrl : 'channel.html', oauth  : true 
+  });
+
+var likeMaster = (function($,window) {
+  var self = {};
+
+  self.login = function() {
+       FB.login(function(response) {
+    	   if (response.authResponse) {
+    	   	self.loggedIn();
+    	   }
+    	});
+  };
+
+
+  self.loggedIn = function() {
+   	alert("Logged In");
+  };
+
+
+  return self;
+})(jQuery,window)
+ 
+&lt;/script&gt;
+
+&lt;div style='text-align:center'&gt;
+&lt;h1&gt;Login to the LikeMaster&trade;&lt;/h1&gt;
+&lt;a href='javascript:void(0);' class='btn large primary' onclick='likeMaster.login();'&gt;Click Me to Login!&lt;/a&gt;
+&lt;/div&gt;
+
+</textarea>
+
+
+</article>
+
+<article class='slide slide-list'>
+<h2>Show our name</h2>
+<p>Hide the login button when a user log's in, show a "Logging in", then the user's name once they are in.</p>
+
+<textarea class='coder-editor code-editor-full' >
+&lt;link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css"&gt;
+&lt;script src='http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js'&gt;END   
+
+&lt;div id="fb-root"&gt;&lt;/div&gt;
+&lt;script src="http://connect.facebook.net/en_US/all.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  FB.init({
+    appId  : '186704188064658', status : true, cookie : true, xfbml  : true, channelUrl : 'channel.html', oauth  : true 
+  });
+
+var likeMaster = (function($,window) {
+  var self    =  {};
+  self.me      = null;
+  self.friends = null;
+
+  self.login = function() {
+       FB.login(function(response) {
+    	   if (response.authResponse) {
+    	   	self.loggedIn();
+    	   }
+    	});
+  };
+
+
+  self.loggedIn = function() {
+     FB.api('/me', function(response) {
+        self.me = response;
+        FB.api('/me/friends', function(response) {
+           friends = response.data;
+           self.displayFriends();
+        });
+     });
+  };
+
+  self.displayFriends = function() {
+
+
+  }
+
+  return self;
+})(jQuery,window)
+ 
+parent.window.likeMaster = likeMaster;
+
+&lt;/script&gt;
+
+&lt;div style='text-align:center'&gt;
+&lt;h1&gt;Login to the LikeMaster&trade;&lt;/h1&gt;
+&lt;a href='javascript:void(0);' class='btn large primary' onclick='likeMaster.login();'&gt;Click Me to Login!&lt;/a&gt;
+&lt;/div&gt;
+
+</textarea>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Display our list of friends</h2>
+<p>Get our friends from Facebook and display them (hint: jQuery templates!)</p>
+
+<textarea class='coder-editor code-editor-full' >
+&lt;link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css"&gt;
+&lt;script src='http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js'&gt;END   
+
+&lt;div id="fb-root"&gt;&lt;/div&gt;
+&lt;script src="http://connect.facebook.net/en_US/all.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  FB.init({
+    appId  : '186704188064658', status : true, cookie : true, xfbml  : true, channelUrl : 'channel.html', oauth  : true 
+  });
+
+var likeMaster = (function($,window) {
+  var self     = {};
+  self.me      = null;
+  self.friends = null;
+
+ self.login = function() {
+    $("#login").hide();
+    $("#loggingIn").fadeIn();
+    FB.login(function(response) {
+  	   if (response.authResponse) {
+  	   	self.loggedIn();
+  	   }
+  	});
+  };
+
+  self.loggedIn = function() {
+     FB.api('/me', function(response) {
+        self.me = response;
+        $("#loggingIn").hide();
+        $("#loggedIn").show();
+        $("#loggedIn h1").text("Welcome " + self.me.name).show();
+        FB.api('/me/friends', function(response) {
+           self.friends = response.data;
+           self.displayFriends();
+        });
+     });
+  };
+
+  self.displayFriends = function() {
+
+
+  }
+
+  return self;
+})(jQuery,window);
+window.parent.window.likeMaster = likeMaster;
+
+&lt;/script&gt;
+
+&lt;script id='friend' type="text/x-jquery-tmpl"&gt;
+  
+&lt;/script&gt;
+
+
+
+&lt;div id='login' class='centered' &gt;
+&lt;h1&gt;Login to the LikeMaster&trade;&lt;/h1&gt;
+&lt;a href='javascript:void(0);' class='btn large primary' onclick='likeMaster.login();'&gt;Click Me to Login!&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div id='loggingIn' class='centered hidden'&gt;
+  &lt;h1&gt;Please Wait, Logging In...&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div id='loggedIn' class='centered hidden'&gt;
+  &lt;h1&gt;Welcome &lt;/h1&gt;
+  &lt;div id='content' class='container'&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;style&gt;
+    .centered { text-align:center; }
+    .hidden { display:none; }
+  &lt;/style&gt;
+
+</textarea>
+</article>
+
+
+ <article class='slide'>
+ <h2>Project</h2>
+<ul>
+	<li class="slide">
+		<h3>Let someone search a song via discogs API <h3>
+	</li>
+	<li class="slide">
+          <h3>Let them add that song to the Kinvey collection</h3>
+	</li>
+	<li class="slide">
+  <h3>Find a JavaScript API or two - perferably JSONp <a href='http://www.programmableweb.com/apis/directory/1?protocol=JavaScript&format=JSON'>Programmable Web</a></h3>
+	</li>
+	<li class="slide">
+		<h3>Create a Mashup using Bootstrap to style</h3>
+	</li>
+</ul>
+</textarea>
+</article>
+
+
+
+
+
+
+<script src='dist/coderdeck.js'></script>
+
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

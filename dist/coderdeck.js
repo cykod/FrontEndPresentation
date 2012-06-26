@@ -5028,7 +5028,7 @@ This module adds a code editor that shows up in individual slides
   }
 
   function addScript(str) {
-   return str.replace(/SCRIPTEND/g,'</s' + 'cript>').replace(/SCRIPT/g,'<script>')
+   return str.replace(/SCRIPTEND/g,'</s' + 'cript>').replace(/SCRIPT/g,'<script>').replace("&amp;","&");
   }
 
   function runCode(element,template) {

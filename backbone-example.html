@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+      <script src='dist/jquery.min.js'></script>
+      <script src='dist/jquery.mustache.js'></script>
+      <script src='dist/underscore.js'></script>
+      <script src='dist/backbone.js'></script>
+</head>
+<body>
+<script>
+$(function() {
+
+  var Album = Backbone.Model.extend({});
+
+  var AlbumCollection = Backbone.Collection.extend({
+    model: Album
+  });
+
+
+  var AlbumCollectionView = Backbone.View.extend({
+    tagName: "ul",
+    render: function() {
+      $(this.el).empty();
+      this.collection.each(function(album) {
+        $(this.el).append(new AlbumView({model: album }).render().el);
+      },this);
+      return this;
+    }
+  });
+
+  var AlbumView = Backbone.View.extend({
+    tagName: "li",
+
+    initialize: function(options) {
+      _.bindAll(this,"render");
+      this.model.on("change",this.render);
+    },
+
+    render: function() {
+      $(this.el).empty()
+                .append($("#album-template").mustache(this.model.attributes));
+      return this;
+    }
+  });
+
+  var albums = null;
+
+  var search = encodeURIComponent("San Jose");
+  $.getJSON('http://api.discogs.com/database/search?callback=?&q=' + search,function(response) {
+
+     albums = window.albums = new AlbumCollection(response.data.results);
+
+     $("#container").append(new AlbumCollectionView({ collection: albums }).render().el);
+  });
+});
+
+</script> 
+
+<script type='mustache' id='album-template'>
+<div>
+  <img src='{{thumb}}' width='64'/> {{title}}
+  {{#year}} / Released {{year}} {{/year}}
+</div>
+</script>
+
+<div id='container'>
+
+</div>
+
+</script>
+</body>
+</html>
